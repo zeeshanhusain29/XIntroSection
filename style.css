@@ -26,8 +26,6 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  position: relative;
-  z-index: 1;
 }
 
 .logo {
@@ -49,7 +47,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 35%;
   height: 100%;
   background: rgba(0, 0, 0, 0.75);
   display: none;
@@ -82,8 +80,6 @@ nav.active {
 .close-menu {
   align-self: flex-end;
   margin-bottom: 20px;
-  position: relative;
-  z-index: 30;
 }
 
 .nav-links {
