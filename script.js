@@ -35,6 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll(".dropdown-list").forEach((list) => {
         list.classList.remove("active");
       });
+      document.querySelectorAll(".dropdown-btn").forEach((button) => {
+        button.classList.remove("link-open");
+      });
       document.querySelectorAll(".arrow").forEach((img) => {
         img.src = "./assets/images/icon-arrow-down.svg";
       });
@@ -42,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Toggle current dropdown
       if (!isActive) {
         dropdown.classList.add("active");
+        trigger.classList.add("link-open");
         if (arrow) arrow.src = "./assets/images/icon-arrow-up.svg";
       }
     });
@@ -51,6 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", () => {
     document.querySelectorAll(".dropdown-list").forEach((list) => {
       list.classList.remove("active");
+    });
+    document.querySelectorAll(".dropdown-btn").forEach((button) => {
+      button.classList.remove("link-open");
     });
     document.querySelectorAll(".arrow").forEach((img) => {
       img.src = "./assets/images/icon-arrow-down.svg";
