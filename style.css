@@ -42,6 +42,7 @@ header {
   display: block;
 }
 
+/* Overlay for Mobile */
 .overlay {
   position: fixed;
   top: 0;
@@ -49,17 +50,15 @@ header {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.75);
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  display: none;
   z-index: 10;
 }
 
 .overlay.active {
-  visibility: visible;
-  opacity: 1;
+  display: block;
 }
 
+/* Mobile Nav Drawer */
 nav {
   position: fixed;
   top: 0;
@@ -68,20 +67,14 @@ nav {
   height: 100%;
   background: white;
   padding: 20px;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 30px;
-  visibility: hidden;
-  opacity: 0;
-  transform: translateX(100%);
-  transition: all 0.3s ease;
   z-index: 20;
 }
 
 nav.active {
-  visibility: visible;
-  opacity: 1;
-  transform: translateX(0);
+  display: flex;
 }
 
 .close-menu {
@@ -113,7 +106,7 @@ nav.active {
   color: var(--almost-black);
 }
 
-/* Dropdown */
+/* Dropdown Menu */
 .dropdown-list {
   list-style: none;
   display: none;
@@ -123,7 +116,7 @@ nav.active {
 }
 
 .dropdown-list.active {
-  display: flex;
+  display: flex !important;
 }
 
 .dropdown-link a {
@@ -242,7 +235,7 @@ footer.attribution a {
   text-decoration: underline;
 }
 
-/* Desktop Styles */
+/* Desktop View Override */
 @media (min-width: 768px) {
   header {
     padding: 30px 40px;
@@ -251,7 +244,11 @@ footer.attribution a {
   }
 
   .open-menu, .close-menu {
-    display: none;
+    display: none !important;
+  }
+
+  .overlay {
+    display: none !important;
   }
 
   nav {
@@ -259,12 +256,10 @@ footer.attribution a {
     width: 100%;
     height: auto;
     padding: 0;
+    display: flex !important;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
     background: transparent;
   }
 

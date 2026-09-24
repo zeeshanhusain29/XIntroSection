@@ -3,9 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeMenuBtn = document.querySelector(".close-menu");
   const nav = document.querySelector("nav");
   const overlay = document.querySelector(".overlay");
-  const dropdownBtns = document.querySelectorAll(".dropdown-btn");
 
-  // Mobile Menu Toggle Functionality
+  // Mobile Menu Toggle Functions
   function openNav() {
     nav.classList.add("active");
     overlay.classList.add("active");
@@ -20,18 +19,19 @@ document.addEventListener("DOMContentLoaded", () => {
   if (closeMenuBtn) closeMenuBtn.addEventListener("click", closeNav);
   if (overlay) overlay.addEventListener("click", closeNav);
 
-  // Dropdown Toggle on Click (Explicitly disabled on hover per requirements)
-  dropdownBtns.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const parent = btn.closest(".has-dropdown");
-      const dropdown = parent.querySelector(".dropdown-list");
-      const arrow = btn.querySelector(".arrow");
+  // Dropdown Toggling - Handles both .dropdown-btn and .nav-link clicks
+  const dropdownTriggers = document.querySelectorAll(".dropdown-btn, .has-dropdown > .nav-link");
 
-      // Toggle current dropdown
+  dropdownTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const parent = trigger.closest(".has-dropdown");
+      const dropdown = parent.querySelector(".dropdown-list");
+      const arrow = parent.querySelector(".arrow");
+
       const isActive = dropdown.classList.contains("active");
 
-      // Close all other dropdowns
+      // Close all active dropdowns first
       document.querySelectorAll(".dropdown-list").forEach((list) => {
         list.classList.remove("active");
       });
@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         img.src = "./assets/images/icon-arrow-down.svg";
       });
 
+      // Toggle current dropdown
       if (!isActive) {
         dropdown.classList.add("active");
         if (arrow) arrow.src = "./assets/images/icon-arrow-up.svg";
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Close dropdowns when clicking outside
+  // Close dropdowns on outside click
   document.addEventListener("click", () => {
     document.querySelectorAll(".dropdown-list").forEach((list) => {
       list.classList.remove("active");
