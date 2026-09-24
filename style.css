@@ -82,6 +82,8 @@ nav.active {
 .close-menu {
   align-self: flex-end;
   margin-bottom: 20px;
+  position: relative;
+  z-index: 30;
 }
 
 .nav-links {
